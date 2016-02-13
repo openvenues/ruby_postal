@@ -1,4 +1,4 @@
-require 'cpostal/expand'
+require 'ruby_postal/cpostal/expand'
 
 module Postal
     class Expand

@@ -1,4 +1,4 @@
-require 'cpostal/parser'
+require 'ruby_postal/cpostal/parser'
 
 module Postal
     class Parser
