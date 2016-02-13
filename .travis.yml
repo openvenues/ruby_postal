@@ -21,7 +21,7 @@ before_install:
     - ./configure --datadir=$(pwd)/data --prefix=$(realpath $(pwd)/../deps) --bindir=$(realpath $(pwd)/../deps)
     - make install
     - cd ..
+before_script:
     - export CFLAGS=-I$(pwd)/deps/include
     - export LDFLAGS=-L$(pwd)/deps/lib
-before_script:
     - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/deps/lib
