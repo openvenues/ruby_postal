@@ -1,3 +1,6 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 require 'test_helper'
 require 'ruby_postal/parser'
 
