@@ -22,7 +22,6 @@ before_install:
     - make install
     - cd ..
 script:
-    - export CFLAGS=-I$(pwd)/deps/include
-    - export LDFLAGS=-L$(pwd)/deps/lib
     - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/deps/lib
+    - bundle exec rake compile -- --with-libpostal-dir=$(pwd)/deps
     - bundle exec rake test
