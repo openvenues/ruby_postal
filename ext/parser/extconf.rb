@@ -1,7 +1,8 @@
 require 'mkmf'
+require 'rbconfig'
 
-LIBDIR      = Config::CONFIG['libdir']
-INCLUDEDIR  = Config::CONFIG['includedir']
+LIBDIR      = RbConfig::CONFIG['libdir']
+INCLUDEDIR  = RbConfig::CONFIG['includedir']
 
 HEADER_DIRS = [
   # First search /opt/local for macports
