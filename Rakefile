@@ -20,6 +20,6 @@ Rake::ExtensionTask.new do |ext|
       ext.lib_dir = 'lib/ruby_postal/cpostal'
 end
 
-task :default => :test
+task :default => :compile
 
 task :test => :compile
