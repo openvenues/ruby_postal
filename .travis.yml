@@ -24,5 +24,5 @@ before_install:
     - cd ..
 script:
     - export LD_LIBRARY_PATH=$(pwd)/deps/lib:$LD_LIBRARY_PATH
-    - bundle exec rake compile -- --with-libpostal-dir=$(pwd)/deps
+    - bundle exec rake compile -- --with-libpostal-include=$(pwd)/deps/include --with-libpostal-lib=$(pwd)/deps/lib
     - bundle exec rake test
