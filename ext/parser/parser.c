@@ -69,7 +69,7 @@ VALUE rb_parse_address(int argc, VALUE *argv, VALUE self) {
     char *address = RSTRING_PTR(input);
 
     address_parser_response_t *parsed;
-    address_parser_options_t options = LIBPOSTAL_ADDRESS_PARSER_DEFAULT_OPTIONS;
+    address_parser_options_t options = get_libpostal_address_parser_default_options();
     if (rb_language != Qnil) {
         options.language = RSTRING_PTR(rb_language);
     }

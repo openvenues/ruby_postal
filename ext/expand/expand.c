@@ -77,7 +77,7 @@ VALUE rb_expand_address(int argc, VALUE *argv, VALUE self) {
         len_languages = (size_t)RARRAY_LEN(rb_languages);
     }
 
-    normalize_options_t options = LIBPOSTAL_DEFAULT_OPTIONS;
+    normalize_options_t options = get_libpostal_default_options();
 
     size_t i;
     char **languages = NULL;
