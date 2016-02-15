@@ -1,5 +1,7 @@
 # ruby_postal
 
+[![Build Status](https://travis-ci.org/openvenues/ruby_postal.svg?branch=master)](https://travis-ci.org/openvenues/ruby_postal)
+
 These are the Ruby bindings to [libpostal](https://github.com/openvenues/libpostal) for
 fast street address parsing and normalization.
 
@@ -25,7 +27,7 @@ Before using the Ruby bindings, you must install the libpostal C library. Make s
 
 **On Linux (Ubuntu)**
 ```
-sudo apt-get install libsnappy-dev autoconf automake libtool python-dev
+sudo apt-get install libsnappy-dev autoconf automake libtool
 ```
 
 **On Mac OSX**
