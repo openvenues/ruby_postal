@@ -1,7 +1,8 @@
 language: ruby
 rvm:
     - 1.9.3
-    - 2.0.0
+    - 2.0
+    - 2.1
     - 2.2.4
     - 2.3.0
 addons:
@@ -22,6 +23,6 @@ before_install:
     - make install
     - cd ..
 script:
-    - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/deps/lib
+    - export LD_LIBRARY_PATH=$(pwd)/deps/lib:$LD_LIBRARY_PATH
     - bundle exec rake compile -- --with-libpostal-dir=$(pwd)/deps
     - bundle exec rake test
