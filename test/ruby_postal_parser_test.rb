@@ -10,7 +10,7 @@ class RubyPostalParserTest < Minitest::Test
         got = 0
 
         parsed = Postal::Parser.parse_address(address)
-        parsed.each { |comp| got += components[comp[:label]] == comp[:component] ? 1 : 0}
+        parsed.each { |comp| got += components[comp[:label]] == comp[:value] ? 1 : 0}
 
         got == expected
     end
