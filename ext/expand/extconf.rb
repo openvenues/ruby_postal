@@ -37,4 +37,4 @@ dir_config('libpostal', HEADER_DIRS, LIB_DIRS)
 $CFLAGS << " -std=gnu99"
 $LIBS << " -lpostal"
 
-create_makefile('cpostal/expand')
+create_makefile('ruby_postal/cpostal/expand')
