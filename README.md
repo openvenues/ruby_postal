@@ -1,6 +1,6 @@
 # ruby_postal
 
-[![Build Status](https://travis-ci.org/openvenues/ruby_postal.svg?branch=master)](https://travis-ci.org/openvenues/ruby_postal)
+[![Build Status](https://travis-ci.org/openvenues/ruby_postal.svg?branch=master)](https://travis-ci.org/openvenues/ruby_postal) [![Gem version](https://img.shields.io/gem/v/ruby_postal.svg)](https://rubygems.org/gems/ruby_postal)
 
 These are the Ruby bindings to [libpostal](https://github.com/openvenues/libpostal) for
 fast street address parsing and normalization.
