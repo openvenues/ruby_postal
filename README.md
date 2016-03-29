@@ -11,7 +11,7 @@ To expand address strings into normalized forms suitable for geocoder queries:
 
 ```ruby
 require 'ruby_postal/expand'
-Postal::Expand.expand_address('Quatre-vignt-douze Ave des Ave des Champs-Élysées')
+Postal::Expand.expand_address('Quatre-vingt-douze Ave des Ave des Champs-Élysées')
 ```
 
 To parse addresses into components:
