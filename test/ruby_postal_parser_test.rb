@@ -32,4 +32,12 @@ class RubyPostalParserTest < Minitest::Test
     def test_parse_nil
         assert_equal [], Postal::Parser.parse_address(nil)
     end
+
+    def test_parse_non_string_raises_exception
+        assert_raises ArgumentError do
+            Postal::Parser.parse_address(["a", "b"])
+            Postal::Parser.parse_address({"a" => "b"})
+        end
+    end
+
 end
