@@ -60,7 +60,7 @@ VALUE rb_expand_address(int argc, VALUE *argv, VALUE self) {
 
     rb_scan_args(argc, argv, "2", &input, &rb_options);
 
-    if (TYPE(rb_options) != T_STRING) {
+    if (TYPE(input) != T_STRING) {
         rb_raise(rb_eArgError, "input must be a string");
         return Qnil;
     }
