@@ -51,12 +51,18 @@ VALUE hash_get_symbol_or_string(VALUE hash, char *key) {
 VALUE rb_parse_address(int argc, VALUE *argv, VALUE self) {
     if (argc < 2) {  // there should only be 1 or 2 arguments
         rb_raise(rb_eArgError, "Usage: parse_address(address, options = {})");
+        return Qnil;
     }
 
     VALUE input;
     VALUE rb_options;
 
     rb_scan_args(argc, argv, "2", &input, &rb_options);
+
+    if (TYPE(input) != T_STRING) {
+        rb_raise(rb_eArgError, "input must be a string");
+        return Qnil;
+    }
 
     if (TYPE(rb_options) != T_HASH) {
         rb_raise(rb_eArgError, "options must be a hash");

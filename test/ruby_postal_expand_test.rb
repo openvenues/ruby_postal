@@ -27,4 +27,16 @@ class RubyPostalExpandTest < Minitest::Test
         assert RubyPostalExpandTest.is_contained_in_expansions?("Friedrichstraße 128, Berlin, Germany", "friedrich strasse 128 berlin germany", options={"languages" => ["de"]})
         assert RubyPostalExpandTest.has_expansion_in_common?("30 West Twenty-sixth Street Floor Number 7'", "Thirty W 26th St Fl #7", options={:languages => ["de"]})
     end
+
+    def test_expand_nil
+        assert_equal [], Postal::Expand.expand_address(nil)
+    end
+
+    def test_expand_non_string_raises_exception
+        assert_raises ArgumentError do
+            Postal::Expand.expand_address(["a", "b"])
+            Postal::Expand.expand_address({"a" => "b"})
+        end
+    end
+
 end
