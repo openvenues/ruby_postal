@@ -28,4 +28,8 @@ class RubyPostalParserTest < Minitest::Test
 
             })
     end
+
+    def test_parse_nil
+        assert_equal [], Postal::Parser.parse_address(nil)
+    end
 end
