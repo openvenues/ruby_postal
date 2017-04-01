@@ -82,7 +82,7 @@ VALUE rb_expand_address(int argc, VALUE *argv, VALUE self) {
         len_languages = (size_t)RARRAY_LEN(rb_languages);
     }
 
-    normalize_options_t options = get_libpostal_default_options();
+    libpostal_normalize_options_t options = libpostal_get_default_options();
 
     size_t i;
     char **languages = NULL;
@@ -95,7 +95,7 @@ VALUE rb_expand_address(int argc, VALUE *argv, VALUE self) {
             VALUE rb_lang = rb_ary_entry(rb_languages, (int)i);
             if (rb_lang != Qnil && TYPE(rb_lang) == T_STRING) {
                 size_t rb_lang_len = RSTRING_LEN(rb_lang);
-                if (rb_lang_len > 0 && rb_lang_len < MAX_LANGUAGE_LEN) {
+                if (rb_lang_len > 0 && rb_lang_len < LIBPOSTAL_MAX_LANGUAGE_LEN) {
                     char *lang = RSTRING_PTR(rb_lang);
                     languages[num_languages++] = lang;
                 }
@@ -205,7 +205,7 @@ VALUE rb_expand_address(int argc, VALUE *argv, VALUE self) {
     }
 
     size_t num_expansions = 0;
-    char **expansions = expand_address(address, options, &num_expansions);
+    char **expansions = libpostal_expand_address(address, options, &num_expansions);
 
     VALUE rb_expansions = rb_ary_new2(num_expansions);
     for (size_t i = 0; i < num_expansions; i++) {
@@ -229,20 +229,20 @@ void Init_expand() {
 
     rb_define_module_function(rb_expand, "expand_address", rb_expand_address, -1);
 
-    rb_define_global_const("ADDRESS_NONE", UINT2NUM(ADDRESS_NONE));
-    rb_define_global_const("ADDRESS_ANY", UINT2NUM(ADDRESS_ANY));
-    rb_define_global_const("ADDRESS_NAME", UINT2NUM(ADDRESS_NAME));
-    rb_define_global_const("ADDRESS_HOUSE_NUMBER", UINT2NUM(ADDRESS_HOUSE_NUMBER));
-    rb_define_global_const("ADDRESS_STREET", UINT2NUM(ADDRESS_STREET));
-    rb_define_global_const("ADDRESS_UNIT", UINT2NUM(ADDRESS_UNIT));
-    rb_define_global_const("ADDRESS_LOCALITY", UINT2NUM(ADDRESS_LOCALITY));
-    rb_define_global_const("ADDRESS_ADMIN1", UINT2NUM(ADDRESS_ADMIN1));
-    rb_define_global_const("ADDRESS_ADMIN2", UINT2NUM(ADDRESS_ADMIN2));
-    rb_define_global_const("ADDRESS_ADMIN3", UINT2NUM(ADDRESS_ADMIN3));
-    rb_define_global_const("ADDRESS_ADMIN4", UINT2NUM(ADDRESS_ADMIN4));
-    rb_define_global_const("ADDRESS_ADMIN_OTHER", UINT2NUM(ADDRESS_ADMIN_OTHER));
-    rb_define_global_const("ADDRESS_POSTAL_CODE", UINT2NUM(ADDRESS_POSTAL_CODE));
-    rb_define_global_const("ADDRESS_NEIGHBORHOOD", UINT2NUM(ADDRESS_NEIGHBORHOOD));
-    rb_define_global_const("ADDRESS_ALL", UINT2NUM(ADDRESS_ALL));
-}
+    rb_define_global_const("ADDRESS_NONE", UINT2NUM(LIBPOSTAL_ADDRESS_NONE));
+    rb_define_global_const("ADDRESS_ANY", UINT2NUM(LIBPOSTAL_ADDRESS_ANY));
+    rb_define_global_const("ADDRESS_NAME", UINT2NUM(LIBPOSTAL_ADDRESS_NAME));
+    rb_define_global_const("ADDRESS_HOUSE_NUMBER", UINT2NUM(LIBPOSTAL_ADDRESS_HOUSE_NUMBER));
+    rb_define_global_const("ADDRESS_STREET", UINT2NUM(LIBPOSTAL_ADDRESS_STREET));
+    rb_define_global_const("ADDRESS_UNIT", UINT2NUM(LIBPOSTAL_ADDRESS_UNIT));
+    rb_define_global_const("ADDRESS_LEVEL", UINT2NUM(LIBPOSTAL_ADDRESS_LEVEL));
+    rb_define_global_const("ADDRESS_STAIRCASE", UINT2NUM(LIBPOSTAL_ADDRESS_STAIRCASE));
+    rb_define_global_const("ADDRESS_ENTRANCE", UINT2NUM(LIBPOSTAL_ADDRESS_ENTRANCE));
+    rb_define_global_const("ADDRESS_CATEGORY", UINT2NUM(LIBPOSTAL_ADDRESS_CATEGORY));
+    rb_define_global_const("ADDRESS_NEAR", UINT2NUM(LIBPOSTAL_ADDRESS_NEAR));
+    rb_define_global_const("ADDRESS_TOPONYM", UINT2NUM(LIBPOSTAL_ADDRESS_TOPONYM));
+    rb_define_global_const("ADDRESS_POSTAL_CODE", UINT2NUM(LIBPOSTAL_ADDRESS_POSTAL_CODE));
+    rb_define_global_const("ADDRESS_PO_BOX", UINT2NUM(LIBPOSTAL_ADDRESS_PO_BOX));
+    rb_define_global_const("ADDRESS_ALL", UINT2NUM(LIBPOSTAL_ADDRESS_ALL));
 
+}
