@@ -7,7 +7,10 @@ module Postal
                 return []
             end
             parse_result = CParser.parse_address address, options
-            parse_result.map{|s, c| {:label => c, :value => s}}
+            if address.respond_to?(:encode)
+                address = address.encode("UTF-8")
+            end
+            parse_result.map{|s, c| {:label => c, :value => s.force_encoding("UTF-8")}}
         end
     end
 end
