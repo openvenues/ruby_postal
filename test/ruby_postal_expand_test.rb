@@ -24,7 +24,7 @@ class RubyPostalExpandTest < Minitest::Test
 
     def test_expansions
         assert RubyPostalExpandTest.is_contained_in_expansions?("781 Franklin Ave Crown Hts Brooklyn NY", "781 franklin avenue crown heights brooklyn new york")
-        assert RubyPostalExpandTest.is_contained_in_expansions?("Friedrichstraße 128, Berlin, Germany", "friedrich strasse 128 berlin germany", options={"languages" => ["de"]})
+        assert RubyPostalExpandTest.is_contained_in_expansions?("Friedrichstraße 128, Berlin, Germany", "friedrich straße 128 berlin germany", options={"languages" => ["de"]})
         assert RubyPostalExpandTest.has_expansion_in_common?("30 West Twenty-sixth Street Floor Number 7'", "Thirty W 26th St Fl #7", options={:languages => ["de"]})
     end
 
