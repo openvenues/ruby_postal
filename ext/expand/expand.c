@@ -212,9 +212,8 @@ VALUE rb_expand_address(int argc, VALUE *argv, VALUE self) {
         char *expansion = expansions[i];
         VALUE rb_expansion = rb_str_new2(expansion);
         rb_ary_store(rb_expansions, i, rb_expansion);
-        free(expansion);
     }
-    free(expansions);
+    libpostal_expansion_array_destroy(expansions, num_expansions);
 
     return rb_expansions;
 }
